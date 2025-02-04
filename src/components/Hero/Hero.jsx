@@ -43,13 +43,13 @@ const Hero =() => {
     }
     return ( 
         <div className="relative overflow-hidden min-h-[550px]
-        sm:min-h-[650px] bg-gray-100 flex justify-center items-center 
-        dark:bg-gray-950 dark:text-white duration-200">
+        sm:min-h-[550px] bg-gray-100 flex justify-center items-center 
+        dark:bg-gray-900 dark:text-white duration-200">
             <div className="h-[500px] w-[500px] bg-primary/40 
-            absolute -tp-1/2 righr-0 rounded-3xl rotate-45 -z[8]">
+            absolute -top-1/2  rounded-3xl rotate-45 -z[8]">
 
             </div>
-            <div className="container pb-8 sm:pb-0">
+            <div className="container pb-8 sm:pb-1">
             <Slider {...settings}>
             {
                 ImageList.map((data) => (
@@ -62,13 +62,13 @@ const Hero =() => {
                     <div className="grid grid-cols-1 sm:grid-cols-2">
                        <div className="flex flex-col justify-center gap-4 pt-12 sm:pt-0 
                        text-center sm:text-left order-2 sm:order-1 relative z-10">
-                        <h1 className="text-5xl sm:text-5xl lg:text-6xl font-bold">
+                        <h1 data-aos="zoom-out" data-aos-once="true" data-aos-duration="500"  className="text-5xl sm:text-5xl lg:text-6xl font-bold">
                             {data.title}
                         </h1><p>
                             
                         </p>
                        
-                        <div >
+                        <div data-aos="fade-up"  data-aos-delay="300"  data-aos-duration="500" >
                             <button className="bg-gradient-to-r from-primary to-secondary duration-200 text-white
                             hover:scale-105 py-2 px-4 rounded-full " >
                                 Order Now
@@ -76,7 +76,7 @@ const Hero =() => {
                         </div>
                         </div>
                         <div className="order-1 sm:order-2">
-                        <div className="relative z-10">
+                        <div data-aos="zoom-in" data-aos-once="true"  className="relative z-10">
                         <img src={data.img} className="h-[300px] w-[300px] sm:h-[450px] sm:w-[450px] 
                        sm:scale-115 lg:scale-120 object-contain mx-auto "/>
                         </div>
