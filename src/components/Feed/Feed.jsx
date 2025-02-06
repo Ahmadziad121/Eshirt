@@ -69,8 +69,7 @@ const Feed =() => {
 
         
     };
-
-  return (
+return (
     <div className=' py-10 mb-10'>
         <div className=' container'>
             <div className="text-center mb-10 max-w-[600px] mx-auto ">
@@ -78,35 +77,28 @@ const Feed =() => {
                 <h1 data-aos="fade-up" className="text-3xl font-bold ">Customers Feedback</h1>
             </div>
             <div data-aos="zoom-in">
-            <Slider {...settings} >
-                {feed.map((data) => (
-                    <div className='my-6 '>
-
-                    
-                    <div key={data.id} className=' flex flex-col gap-4 shadow-lg py-8 
-                    px-6 mx-4 rounded-xl  bg-primary/15 relative'>
-                        <div className=' mb-4 '>
-                            <img src={data.img} className=' rounded-full w-20h h-20 '/>
-
-                        </div>
+                <Slider {...settings} >
+                    {feed.map((data) => (
+                        <div className='my-6 '>
+                            <div key={data.id} className=' flex flex-col gap-4 shadow-lg py-8  px-6 mx-4 rounded-xl  bg-primary/15 relative'>
+                                <div className=' mb-4 '>
+                                    <img src={data.img} className=' rounded-full w-20h h-20 '/>
+                                </div>
                         <div className=' flex flex-col items-center gap-4'>
-                        <div className=' space-y-3'>
-
-                        
-                        <p className=' text-xs text-gray-400 '>{data.text} </p>
-                        <h1 className=' text-xl font-bold text-black/80  dark:text-light '>{data.name} </h1>
+                            <div className=' space-y-3'>
+                            <p className=' text-xs text-gray-400 '>{data.text} </p>
+                            <h1 className=' text-xl font-bold text-black/80  dark:text-light '>{data.name} </h1>
                             </div>
                         </div>
                         <p className=' text-black/20 text-9xl font-serif absolute top-0 right-0'>,,</p>
-                    </div>
-                    </div>
-                    
+                            </div>
+                        </div>
                 ))}
-            </Slider>
+                </Slider>
             </div>
         </div>
     </div>
-  );
+);
 };
 
 export default Feed
