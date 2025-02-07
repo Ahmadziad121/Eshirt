@@ -2,7 +2,7 @@ import React from "react";
 import Logo from "../../assets/Logo.avif";
 import { IoMdSearch } from "react-icons/io";
 import { FaCartShopping } from "react-icons/fa6";
-import { FaCaretDown } from "react-icons/fa";
+import { FaCaretDown ,FaUser} from "react-icons/fa";
 const Menu = [
     {
         id: 1,
@@ -20,12 +20,12 @@ const Menu = [
         link: "/#",
     },
     {
-        id: 3,
+        id: 4,
         name: "Women",
         link: "/#",
     },
     {
-        id: 3,
+        id: 5,
         name: "Kids",
         link: "/#",
     },
@@ -48,7 +48,7 @@ link: "/#",
 ];
 
 
-const Navbar =(handleOrderPopup) => {
+const Navbar =({handleOrderPopup}) => {
     return (
         <div className="shadow-md bg-white  dark:bg-gray-900 duration-200 relative z-40">
             <div className="bg-primary/40 py-2 ">
@@ -67,14 +67,26 @@ const Navbar =(handleOrderPopup) => {
                          focus:outline-none focus:boarder-1 focus:boarder-primary"/>
                           <IoMdSearch className="text-gray-500 group-hover:text-primary 
                            absolute top-0 translate-y-1/2 right-3" />
+
                     </div>
+
                 </div>
+                <div className="flex   ">
+                <div className="pr-4">
+                <button onClick={()=> handleOrderPopup()}
+                    className="bg-gradient-to-r from-primary to-secondary transition-all duration-200 text-white
+                    py-1 px-4 rounded-full  flex items-center  gap-3 group ">
+                <span className="transition-all duration-200 group-hover:block hidden  ">Order</span>
+                <FaCartShopping className="text-xl text-white drop-shadow-sm cursor-pointer  "/>
+                </button>
+                </div>
+                
                 <button onClick={()=> handleOrderPopup()}
                     className="bg-gradient-to-r from-primary to-secondary transition-all duration-200 text-white
                     py-1 px-4 rounded-full flex items-center gap-3 group ">
                 <span className="transition-all duration-200 group-hover:block hidden  ">Order</span>
-                <FaCartShopping className="text-xl text-white drop-shadow-sm cursor-pointer  "/>
-                </button>
+                <FaUser  className="text-xl text-white drop-shadow-sm cursor-pointer  "/>
+                </button></div>
             </div>
 
         </div>

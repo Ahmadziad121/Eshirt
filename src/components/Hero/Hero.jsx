@@ -29,7 +29,7 @@ const ImageList =[
     },
 
 ];
-const Hero =(handleOrderPopup) => {
+const Hero =({handleOrderPopup}) => {
     var settings ={
         dots:false,
         arrows:false,

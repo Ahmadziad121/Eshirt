@@ -37,7 +37,7 @@ const ProductsData =[
         description:"Bayern München 1997-98 Home  Sponsor by Opel Adidas Brand ",
     }
 ]
-const Classic =(handleOrderPopup) => {
+const Classic =({handleOrderPopup} ) => {
     return (
         <div >
             <div className="container">

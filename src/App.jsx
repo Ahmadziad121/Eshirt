@@ -8,14 +8,18 @@ import Sub from './components/Sub/Sub';
 import Feed from './components/Feed/Feed';
 import Footer from './components/Footer/Footer';
 import Popup from './components/Popup/Popup';
+
 import AOS from "aos";
 import "aos/dist/aos.css"
+import { ImOpt } from 'react-icons/im';
 
 const App = () =>{
-  const [orderPopup ,setOrderPopup]=react.useState(false);
-  const handleOrderPopup=()=>{
-    setOrderPopup(!orderPopup)
-  }
+  
+   
+  const [ orderPopup , setOrderPopup]=react.useState(false);
+  const handleOrderPopup =()=>{
+    setOrderPopup(!orderPopup);
+  };
   react.useEffect(() =>{
     AOS.init({
       offset:100,
@@ -28,18 +32,18 @@ const App = () =>{
 
   return(
     <div >
-      <Navbar handleOrderPopup={handleOrderPopup}/>
+      <Navbar handleOrderPopup={handleOrderPopup} />
       <Hero  handleOrderPopup={handleOrderPopup}/>
-      <Products  handleOrderPopup={handleOrderPopup}/>
+      <Products  handleOrderPopup={handleOrderPopup} />
       <Classic  handleOrderPopup={handleOrderPopup}/>
       <Banner/>
       <Sub />
       <Feed />
       <Footer/>
       <Popup orderPopup={orderPopup} setOrderPopup={setOrderPopup}/>
-
+  
 
     </div>
   )}
 
-export default App
+export default App;
