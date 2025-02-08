@@ -53,7 +53,7 @@ const Navbar =({handleOrderPopup}) => {
         <div className="shadow-md bg-white  dark:bg-gray-900 duration-200 relative z-40">
             <div className="bg-primary/40 py-2 ">
             <div className="container flex justify-between items-center">
-                <div>
+                <div  id="home">
                     <a href="#" className="font-bold text-white text-2xl sm:text-3xl flex gap-2">
                         <img src={Logo} alt="logo" className="w-10" />
                          Eshirt
