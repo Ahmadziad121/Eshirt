@@ -15,6 +15,7 @@ const ProductsData =[
         title:"Real Madrid Home",
         rating:5.0,
         color:"white",
+        price:"50$",
         aosDelay:"0",
 
     },
@@ -24,6 +25,7 @@ const ProductsData =[
        title:"Barcelona Home",
        rating:4.8,
        color:"Red & Blue",
+       price:"50$",
        aosDelay:"200",
 
    },
@@ -33,6 +35,7 @@ const ProductsData =[
    title:" Liverpool Home",
    rating:4.6,
    color:"Red",
+   price:"50$",
    aosDelay:"400",
 
 },
@@ -42,6 +45,7 @@ const ProductsData =[
    title:" Man United Home",
    rating:4.5,
    color:"Red",
+   price:"50$",
    aosDelay:"600",
 
 },
@@ -51,6 +55,7 @@ const ProductsData =[
    title:" Man City Home",
    rating:4.4,
    color:"Blue",
+   price:"50$",
    aosDelay:"800",
 
 },
@@ -60,6 +65,7 @@ const ProductsData =[
    title:" Arsenal Home",
    rating:4.7,
    color:"Red",
+   price:"50$",
    aosDelay:"1000",
 
 },
@@ -90,6 +96,7 @@ const Products =({ handleAddToBasket}) => {
                             <div>
                                 <h3 className="font-semibold">{data.title}</h3>
                                 <p className="text-sm text-gray-600">{data.color}</p>
+                                <p className="text-sm text-gray-600">{data.price}</p>
                                 <div className="flex items-center gap-1">
                                     <FaStar className="text-yellow-400" />
                                     <span>{data.rating}</span>
@@ -109,5 +116,5 @@ const Products =({ handleAddToBasket}) => {
             </div>
         </div>
     )
-}
+};
 export default Products

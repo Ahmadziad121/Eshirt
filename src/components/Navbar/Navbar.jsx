@@ -17,17 +17,17 @@ const Menu = [
     {
         id: 3,
         name: "Mens",
-        link: "/#",
+        link: "/Mens",
     },
     {
         id: 4,
         name: "Women",
-        link: "/#",
+        link: "/Womens",
     },
     {
         id: 5,
         name: "Kids",
-        link: "/#",
+        link: "/Kids",
     },
 ];
 const DropdownLinks=[{  
