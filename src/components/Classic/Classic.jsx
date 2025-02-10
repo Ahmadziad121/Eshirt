@@ -39,7 +39,7 @@ const ProductsData =[
 ]
 const Classic =({handleAddToBasket} ) => {
     return (
-        <div >
+        <div id="Top" >
             <div className="container">
             <div className="text-center mb-24 max-w-[600px] mx-auto ">
                     <p data-aos="fade-up" className="text-sm text-primary  ">Classic Kit for you </p>
@@ -67,7 +67,7 @@ const Classic =({handleAddToBasket} ) => {
                         text-sm line-clamp-2">{data.description}</p>
                         <button className="group-hover:text-primary bg-primary hover:scale-105 duration-300 
                         text-white py-1 px-4 rounded-full mt-4 group-hover:bg-white" 
-                        onClick={()=> handleAddToBasket()}
+                        onClick={()=> handleAddToBasket(data)}
                         >Order Now</button>
                         </div>
 

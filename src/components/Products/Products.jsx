@@ -74,7 +74,7 @@ const ProductsData =[
 ];
 const Products =({ handleAddToBasket}) => {
     return (
-        <div className="mt-14 mb-12" >
+        <div className="mt-14 mb-12" id="products" >
             <div className="container">
                 <div className="text-center mb-10 max-w-[600px] mx-auto ">
                     <p data-aos="fade-up" className="text-sm text-primary  ">Top Selling Kit for you </p>
@@ -93,19 +93,19 @@ const Products =({ handleAddToBasket}) => {
 
                             <img src={data.img} className="h-[220px] w-[150px] 
                             object-cover rounded-md"/>
-                            <div>
+                            <div className="" >
                                 <h3 className="font-semibold">{data.title}</h3>
-                                <p className="text-sm text-gray-600">{data.color}</p>
-                                <p className="text-sm text-gray-600">{data.price}</p>
-                                <div className="flex items-center gap-1">
-                                    <FaStar className="text-yellow-400" />
+                                <p className="text-sm text-gray-600 ">{data.color}</p>
+                                <p className="text-sm text-gray-600 ">{data.price}</p>
+                                <div className="flex items-center  gap-1">
+                                    <FaStar className="text-yellow-400 " />
                                     <span>{data.rating}</span>
                      
                                 </div>
                                 <div>
                                     <button className="group-hover:text-primary bg-primary hover:scale-105 duration-300 
                         text-white py-1 px-4 rounded-full mt-4 group-hover:bg-white " 
-                        onClick={()=> handleAddToBasket()}
+                        onClick={()=> handleAddToBasket(data)}
                         >Order Now</button></div>
                             </div>
                             </div>

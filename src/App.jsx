@@ -1,5 +1,5 @@
-import react from 'react';
-import { BrowserRouter as Router ,Routes ,Route } from 'react-router-dom';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar/Navbar';
 import Hero from './components/Hero/Hero';
 import Products from './components/Products/Products';
@@ -14,15 +14,26 @@ import 'react-toastify/dist/ReactToastify.css';
 import Mens from './Pages/Mens/Mens';
 import Womens from './Pages/Womens/Womens';
 import Kids from './Pages/Kids/Kids';
+import Classics from './Pages/Classics/Classics';
 import AOS from "aos";
-import "aos/dist/aos.css"
-import { ImOpt } from 'react-icons/im';
+import "aos/dist/aos.css";
 
-const App = () =>{
-  
-  const handleAddToBasket = () => {
-    
-    toast.success("Product added to basket successfully!", {
+const App = () => {
+  // Load the basket from localStorage on initial load
+  const [basketItems, setBasketItems] = React.useState(() => {
+    const savedBasket = localStorage.getItem('basket');
+    return savedBasket ? JSON.parse(savedBasket) : []; // If no basket in localStorage, return an empty array
+  });
+
+  // Function to add item to the basket
+  const handleAddToBasket = (product) => {
+    const updatedBasket = [...basketItems, product];
+    setBasketItems(updatedBasket);
+
+    // Save the updated basket to localStorage
+    localStorage.setItem('basket', JSON.stringify(updatedBasket));
+
+    toast.success(`${product.title} added to basket!`, {
       position: "top-right",
       autoClose: 3000,
       hideProgressBar: false,
@@ -30,46 +41,77 @@ const App = () =>{
       pauseOnHover: true,
       draggable: true,
     });
-  }; 
-  const [ orderPopup , setOrderPopup]=react.useState(false);
-  const handleOrderPopup =()=>{
+  };
+
+  // Function to remove item from the basket
+  const handleRemoveFromBasket = (index) => {
+    const updatedBasket = basketItems.filter((_, i) => i !== index);
+    setBasketItems(updatedBasket);
+
+    // Save the updated basket to localStorage
+    localStorage.setItem('basket', JSON.stringify(updatedBasket));
+
+    toast.info("Item removed from basket", {
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+    });
+  };
+
+  // Order popup state
+  const [orderPopup, setOrderPopup] = React.useState(false);
+  const handleOrderPopup = () => {
     setOrderPopup(!orderPopup);
   };
-  react.useEffect(() =>{
+
+  // Initialize AOS (animation library)
+  React.useEffect(() => {
     AOS.init({
-      offset:100,
-      duration:1000,
-      easing:"ease-in-sine",
-      delay:100,
+      offset: 100,
+      duration: 1000,
+      easing: "ease-in-sine",
+      delay: 100,
     });
     AOS.refresh();
-  },[]);
+  }, []);
 
-  return(
-     <Router>
-     <div >
-      <Navbar handleOrderPopup={handleOrderPopup} />
-      <Routes>
-      <Route  path='/' element={<>
-        <Hero  handleOrderPopup={handleOrderPopup}/>
-      <Products   handleAddToBasket={handleAddToBasket}/>
-      <Classic   handleAddToBasket={handleAddToBasket}/>
-      <Banner/>
-      <Sub />
-      <Feed />
-      </>}/>
-      
-        <Route path='/Mens' element={<Mens  handleAddToBasket={handleAddToBasket}/>}/>
-        <Route path='/Womens' element={<Womens  handleAddToBasket={handleAddToBasket}/>}/>
-        <Route path='/Kids' element={<Kids  handleAddToBasket={handleAddToBasket}/>}/>
+  return (
+    <Router>
+      <div>
+        <Navbar 
+          handleOrderPopup={handleOrderPopup} 
+          basketItems={basketItems} 
+          handleRemoveFromBasket={handleRemoveFromBasket} 
+        />
+        <Routes>
+          <Route 
+            path='/' 
+            element={
+              <>
+                <Hero handleOrderPopup={handleOrderPopup} />
+                <Products handleAddToBasket={handleAddToBasket} />
+                <Classic handleAddToBasket={handleAddToBasket} />
+                <Banner />
+                <Sub />
+                <Feed />
+              </>
+            }
+          />
+          <Route path='/Mens' element={<Mens handleAddToBasket={handleAddToBasket} />} />
+          <Route path='/Womens' element={<Womens handleAddToBasket={handleAddToBasket} />} />
+          <Route path='/Kids' element={<Kids handleAddToBasket={handleAddToBasket} />} />
+          <Route path='/Classics' element={<Classics handleAddToBasket={handleAddToBasket} />} />
+        </Routes>
 
-      </Routes>
-
-      <Footer/>
-      <Popup orderPopup={orderPopup} setOrderPopup={setOrderPopup}/>
-      <ToastContainer />
-    </div>
+        <Footer />
+        <Popup orderPopup={orderPopup} setOrderPopup={setOrderPopup} />
+        <ToastContainer />
+      </div>
     </Router>
-  )}
+  );
+};
 
 export default App;

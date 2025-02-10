@@ -84,7 +84,7 @@ const Womens =({ handleAddToBasket}) => {
         <div className="mt-14 mb-12" >
             <div className="container">
                 <div className="text-center mb-10 max-w-[600px] mx-auto ">
-                    <p data-aos="fade-up" className="text-sm text-primary  ">Top Selling Kit for you </p>
+                  
                     <h1 data-aos="fade-up" className="text-3xl font-bold ">Jersey</h1>
                 </div>
                 <div>
@@ -112,7 +112,7 @@ const Womens =({ handleAddToBasket}) => {
                                 <div>
                                     <button className="group-hover:text-primary bg-primary hover:scale-105 duration-300 
                         text-white py-1 px-4 rounded-full mt-4 group-hover:bg-white " 
-                        onClick={()=> handleAddToBasket()}
+                        onClick={()=> handleAddToBasket(data)}
                         >Order Now</button></div>
                             </div>
                             </div>

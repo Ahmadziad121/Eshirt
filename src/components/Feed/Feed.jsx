@@ -70,7 +70,7 @@ const Feed =() => {
         
     };
 return (
-    <div className=' py-10 mb-10'>
+    <div className=' py-10 mb-10' id='back'>
         <div className=' container'>
             <div className="text-center mb-10 max-w-[600px] mx-auto ">
                 <p data-aos="fade-up" className="text-sm text-primary  ">What our customers are saying </p>
