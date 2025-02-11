@@ -317,6 +317,14 @@ const ProductsData =[
 
 ];
 const Mens =({ handleAddToBasket}) => {
+    const [selectedSize, setSelectedSizes] = React.useState('');
+        
+          // Handle size change
+          const handleSizeChange = (productId, size) => {
+            setSelectedSizes((prevSizes) => ({
+              ...prevSizes,
+              [productId]: size,
+          }));}
     return (
         <div className="mt-14 mb-12" >
             <div className="container">
@@ -346,20 +354,48 @@ const Mens =({ handleAddToBasket}) => {
                                     <span>{data.rating}</span>
                      
                                 </div>
-                                <div>
-                                    <button className="group-hover:text-primary bg-primary hover:scale-105 duration-300 
-                        text-white py-1 px-4 rounded-full mt-4 group-hover:bg-white " 
-                        onClick={()=> handleAddToBasket(data)}
-                        >Order Now</button></div>
-                            </div>
-                            </div>
-                        ))
+                                   {/* Size Selection */}
+                <div className="mt-4">
+  <label className="block text-ms font-medium">Choose Size:</label>
+  <div className="flex space-x-1 mt-2">
+    {[ "S", "M", "L", "XL", "2XL"].map((size) => (
+      <button
+        key={size}
+        onClick={() => handleSizeChange(data.id ,size)}
+        className={`px-2 py-0 border rounded-full ${
+          selectedSize[data.id] === size
+            ? "bg-primary text-white"
+            : "bg-gray-100 text-gray-700"
+        } hover:bg-primary hover:text-white`}
+      >
+        {size}
+      </button>
+    ))}</div>
+</div>
+
+                {/* Order Button */}
+                <button
+                  className="group-hover:text-primary bg-primary hover:scale-105 duration-300 text-white py-1 px-4 rounded-full mt-4 group-hover:bg-white"
+                  onClick={() => {
+                    if (selectedSize) {
+                      handleAddToBasket({ ...data, size: selectedSize });
+                    } else {
+                      alert("Please select a size.");
                     }
+                  }}
+                >
+                  Order Now
+                </button>
+              </div>
+            </div>
+          ))}
+                            </div>
+                            </div>
+                    
                     </div>
                 </div>
-            </div>
-        </div>
+
     )
-}
+};
 
 export default Mens;

@@ -1,16 +1,16 @@
 import React from 'react';
-import Img1 from "../../assets/Women/real.webp";
-import Img2 from "../../assets/Women/brcelona.webp";
-import Img3 from "../../assets/Women/city.jpg";
-import Img4 from "../../assets/Women/united.jpg";
-import Img5 from "../../assets/Women/arsenal.jpg";
-import Img6 from "../../assets/Women/bayern.jpg";
-import Img8 from "../../assets/Women/liverpool.jpg";
+import Imgw1 from "../../assets/Women/real.webp";
+import Imgw2 from "../../assets/Women/brcelona.webp";
+import Imgw3 from "../../assets/Women/city.jpg";
+import Imgw4 from "../../assets/Women/united.jpg";
+import Imgw5 from "../../assets/Women/arsenal.jpg";
+import Imgw6 from "../../assets/Women/bayern.jpg";
+import Imgw8 from "../../assets/Women/liverpool.jpg";
 import { FaStar } from "react-icons/fa6";
 const ProductsData =[
     {
          id:1,
-        img:Img1,
+        img:Imgw1,
         title:"Real Madrid Home",
         rating:5.0,
         color:"white",
@@ -20,7 +20,7 @@ const ProductsData =[
     },
     {
         id:2,
-       img:Img2,
+       img:Imgw2,
        title:"Barcelona Home",
        rating:5.0,
        color:"Red & Blue",
@@ -30,7 +30,7 @@ const ProductsData =[
    },
    {
     id:3,
-   img:Img3,
+   img:Imgw3,
    title:"Man City Home",
    rating:5.0,
    color:"Blue",
@@ -40,7 +40,7 @@ const ProductsData =[
 },
 {
     id:4,
-   img:Img4,
+   img:Imgw4,
    title:"Man United Home",
    rating:5.0,
    color:"red",
@@ -50,7 +50,7 @@ const ProductsData =[
 },
     {
         id:5,
-       img:Img5,
+       img:Imgw5,
        title:"Arsenal Home",
        rating:4.8,
        color:"Red ",
@@ -60,7 +60,7 @@ const ProductsData =[
    },
    {
     id:6,
-   img:Img6,
+   img:Imgw6,
    title:"Bayern München Home",
    rating:4.8,
    color:"Red",
@@ -71,7 +71,7 @@ const ProductsData =[
 
    {
     id:8,
-   img:Img8,
+   img:Imgw8,
    title:" Liverpool Home",
    rating:4.6,
    color:"Red",
@@ -80,6 +80,14 @@ const ProductsData =[
 }];
 
 const Womens =({ handleAddToBasket}) => {
+    const [selectedSize, setSelectedSizes] = React.useState({});
+        
+          // Handle size change
+          const handleSizeChange = (id, size) => {
+            setSelectedSizes((prevSizes) => ({
+              ...prevSizes,
+              [id]: size,
+          }));}
     return (
         <div className="mt-14 mb-12" >
             <div className="container">
@@ -107,21 +115,48 @@ const Womens =({ handleAddToBasket}) => {
                                 <div className="flex items-center gap-1">
                                     <FaStar className="text-yellow-400" />
                                     <span>{data.rating}</span>
-                     
                                 </div>
-                                <div>
-                                    <button className="group-hover:text-primary bg-primary hover:scale-105 duration-300 
-                        text-white py-1 px-4 rounded-full mt-4 group-hover:bg-white " 
-                        onClick={()=> handleAddToBasket(data)}
-                        >Order Now</button></div>
-                            </div>
-                            </div>
-                        ))
+                                {/* Size Selection */}
+                <div className="mt-4">
+  <label className="block text-ms font-medium">Choose Size:</label>
+  <div className="flex space-x-1 mt-2">
+    {[ "S", "M", "L", "XL", "2XL"].map((size) => (
+      <button
+        key={size}
+        onClick={() => handleSizeChange(data.id ,size)}
+        className={`px-2 py-0 border rounded-full ${
+          selectedSize[data.id] === size
+            ? "bg-primary text-white"
+            : "bg-gray-100 text-gray-700"
+        } hover:bg-primary hover:text-white`}
+      >
+        {size}
+      </button>
+    ))}</div>
+</div>
+
+                {/* Order Button */}
+                <button
+                  className="group-hover:text-primary bg-primary hover:scale-105 duration-300 text-white py-1 px-4 rounded-full mt-4 group-hover:bg-white"
+                  onClick={() => {
+                    if (selectedSize[data.id]) {
+                      handleAddToBasket({ ...data, size: selectedSize[data.id] });
+                    } else {
+                      alert("Please select a size.");
                     }
+                  }}
+                >
+                  Order Now
+                </button>
+              </div>
+            </div>
+          ))}
+                            </div>
+                            </div>
+                    
                     </div>
                 </div>
-            </div>
-        </div>
+
     )
 };
 export default Womens ;

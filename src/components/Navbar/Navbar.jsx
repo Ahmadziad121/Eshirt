@@ -1,5 +1,5 @@
 import React from "react";
-import Logo from "../../assets/Logo.avif";
+import Logo from "../../assets/Logo.png";
 import { IoMdSearch } from "react-icons/io";
 import { FaCartShopping } from "react-icons/fa6";
 import { FaCaretDown ,FaUser} from "react-icons/fa";
@@ -104,6 +104,7 @@ const Navbar =({handleOrderPopup ,basketItems,handleRemoveFromBasket}) => {
                         <li key={index} className="flex justify-between items-center border-b py-2">
                           <span className="text-sm">{data.title}</span>
                           <span className="text-sm font-bold pr-5">{data.price}</span>
+                         
                           <IoCloseOutline className=' text-2xl cursor-pointer '
                               onClick={()=> handleRemoveFromBasket(index)}/>
                         </li>
@@ -165,4 +166,5 @@ const Navbar =({handleOrderPopup ,basketItems,handleRemoveFromBasket}) => {
         </div>
     )
 }
-export default Navbar
+export default Navbar;
+

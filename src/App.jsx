@@ -24,7 +24,16 @@ const App = () => {
     const savedBasket = localStorage.getItem('basket');
     return savedBasket ? JSON.parse(savedBasket) : []; // If no basket in localStorage, return an empty array
   });
-
+  const handleContactMessage = () => {
+    toast.info("We will contact with you soon!", {
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+    });
+  };
   // Function to add item to the basket
   const handleAddToBasket = (product) => {
     const updatedBasket = [...basketItems, product];
@@ -85,13 +94,15 @@ const App = () => {
           handleOrderPopup={handleOrderPopup} 
           basketItems={basketItems} 
           handleRemoveFromBasket={handleRemoveFromBasket} 
+          handleContactMessage={handleContactMessage}
+          
         />
         <Routes>
           <Route 
             path='/' 
             element={
               <>
-                <Hero handleOrderPopup={handleOrderPopup} />
+                <Hero handleOrderPopup={handleOrderPopup} handleContactMessage={handleContactMessage} />
                 <Products handleAddToBasket={handleAddToBasket} />
                 <Classic handleAddToBasket={handleAddToBasket} />
                 <Banner />
@@ -103,11 +114,11 @@ const App = () => {
           <Route path='/Mens' element={<Mens handleAddToBasket={handleAddToBasket} />} />
           <Route path='/Womens' element={<Womens handleAddToBasket={handleAddToBasket} />} />
           <Route path='/Kids' element={<Kids handleAddToBasket={handleAddToBasket} />} />
-          <Route path='/Classics' element={<Classics handleAddToBasket={handleAddToBasket} />} />
+          <Route path='/Classics' element={<Classics handleAddToBasket={handleAddToBasket}  />} />
         </Routes>
 
         <Footer />
-        <Popup orderPopup={orderPopup} setOrderPopup={setOrderPopup} />
+        <Popup orderPopup={orderPopup} setOrderPopup={setOrderPopup} handleContactMessage={handleContactMessage} />
         <ToastContainer />
       </div>
     </Router>

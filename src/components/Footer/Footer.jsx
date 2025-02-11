@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from "../../assets/Logo.avif";
+import logo from "../../assets/Logo.png";
 import back from "../../assets/back.webp";
 import { FaFacebook, FaInstagram, FaLinkedin, FaLocationArrow } from 'react-icons/fa6';
 import { FaMobileAlt } from 'react-icons/fa';
