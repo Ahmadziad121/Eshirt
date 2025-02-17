@@ -6,7 +6,7 @@ const jwt = require("jsonwebtoken");
 const multer =require("multer");
 const path =require("path");
 const cors =require("cors");
-const { error } = require("console");
+const { error, log } = require("console");
 
 
 app.use(express.json());
@@ -75,7 +75,7 @@ app.post("/addproduct",async(req,res)=>{
         id=1;
     }
     const product = new Product({
-        id:req.body.id,
+        id:id,
         name:req.body.name,
         category:req.body.category,
         new_price:req.body.new_price,
@@ -90,7 +90,21 @@ app.post("/addproduct",async(req,res)=>{
         name:req.body.name,
     })
 })
-
+//api for delete
+app.post("/remove",async(req,res)=>{
+    await Product.findOneAndDelete({id:req.body.id});
+    console.log("removed");
+    res.json({
+        success:true,
+        name:req.body.name
+    })
+})
+//get all product
+app.get("/all",async(req,res)=>{
+    let products =await Product.find({});
+    console.log("All");
+    res.send(products);
+})
 app.listen(port,error=>{
     if (!error){
         console.log("Server running on port" +port)
