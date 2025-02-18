@@ -7,6 +7,7 @@ const multer =require("multer");
 const path =require("path");
 const cors =require("cors");
 const { error, log } = require("console");
+const { type } = require("os");
 
 
 app.use(express.json());
@@ -40,6 +41,10 @@ const Product=mongoose.model("Product",{
     },
     name:{
         type: String,
+        required:true,
+    },
+    image:{
+        type:String,
         required:true,
     },
     category:{
@@ -77,6 +82,7 @@ app.post("/addproduct",async(req,res)=>{
     const product = new Product({
         id:id,
         name:req.body.name,
+        image:req.body.image,
         category:req.body.category,
         new_price:req.body.new_price,
         old_price:req.body.old_price,
