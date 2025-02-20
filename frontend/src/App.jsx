@@ -15,6 +15,7 @@ import Mens from './Pages/Mens/Mens';
 import Womens from './Pages/Womens/Womens';
 import Kids from './Pages/Kids/Kids';
 import Classics from './Pages/Classics/Classics';
+import Sign from './Pages/loginsign/sign';
 import AOS from "aos";
 import "aos/dist/aos.css";
 
@@ -115,6 +116,8 @@ const App = () => {
           <Route path='/Womens' element={<Womens handleAddToBasket={handleAddToBasket} />} />
           <Route path='/Kids' element={<Kids handleAddToBasket={handleAddToBasket} />} />
           <Route path='/Classics' element={<Classics handleAddToBasket={handleAddToBasket}  />} />
+          <Route path='/Login' element={<Sign/>}/>
+          <Route path='/Sign' element={<Sign/>}/>
         </Routes>
 
         <Footer />
