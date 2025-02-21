@@ -159,6 +159,13 @@ app.post('/signup',async(req,res)=>{
     const token = jwt.sign(data,'secret_ecom');
     res.json({success:true,token})
 })
+//endpoint for products
+app.get('/Mens' ,async(req,res)=>{
+    let productes =await Product.find({});
+    let products =productes.slice(1).slice(-8);
+    console.log('products');
+    res.send(products);
+})
 //login
 app.post('/login',async(req,res)=>{
     let user = await Users.findOne({email:req.body.email});
